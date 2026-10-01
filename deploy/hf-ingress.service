@@ -1,0 +1,30 @@
+[Unit]
+Description=HF bridge RTL-SDR ingress with field reporting
+After=network.target
+Wants=network-online.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=notify
+NotifyAccess=main
+WatchdogSec=20s
+User=YOUR_USER
+WorkingDirectory=/home/YOUR_USER/reticulum-hf-bridge
+Environment=PYTHONPATH=src
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/home/YOUR_USER/reticulum-hf-bridge/.venv/bin/python -m hfbridge.ingress \
+    --config rns-instances/ingress \
+    --quiet \
+    --gain 0 \
+    --margin-db 6 \
+    --report-url https://YOUR-TAILSCALE-HOST/api/report \
+    --report-token-file /home/YOUR_USER/.hf-report-token \
+    --report-queue /home/YOUR_USER/hf-logs/field-reports.jsonl \
+    --report-gps-csv /home/YOUR_USER/hf-logs/field-gps.csv
+Restart=always
+RestartSec=5
+StandardOutput=append:/home/YOUR_USER/hf-logs/field-ingress.log
+StandardError=append:/home/YOUR_USER/hf-logs/field-ingress.log
+
+[Install]
+WantedBy=multi-user.target

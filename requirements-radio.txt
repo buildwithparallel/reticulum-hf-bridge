@@ -1,0 +1,8 @@
+# Python deps for HL2 TX / RTL-SDR RX bench tests.
+# python3.12 -m venv .venv && .venv/bin/pip install -r requirements-radio.txt
+# then: .venv/bin/pip install -e third_party/pyrtlsdr
+numpy>=2.0
+pyrtlsdrlib>=0.0.3
+netifaces>=0.11.0
+rns>=1.0.0
+lxmf>=0.8.0

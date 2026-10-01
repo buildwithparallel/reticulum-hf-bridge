@@ -1,0 +1,72 @@
+# editors and operating-system metadata
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*~
+
+# local credentials
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*.pfx
+.hf-report-token
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# build
+/build/
+/dist/
+*.egg
+**/target/
+src/hfbridge/_acq*.so
+src/hfbridge/_acq*.dylib
+src/hfbridge/_acq*.pyd
+
+# Reticulum runtime
+**/.reticulum/
+/rns-instances/
+
+# SDR captures, local radio dumps, benchmark JSON
+/captures/
+/benchmarks/
+*.wav
+*.iq
+*.raw
+*.cf32
+*.cs16
+*.npz
+
+# Raw field-test telemetry (precise GPS, message text, timestamps, and station identifiers)
+hf-tx-control.jsonl
+field-reports.jsonl
+gps.csv
+hf-logs/
+/2026-08-26-benchmarks/*-gps.csv
+/2026-08-26-benchmarks/*-ingress.log
+/2026-08-26-benchmarks/field-control.jsonl
+/2026-09-11-mobile-tests/*.jsonl
+
+# vendored radio stacks (see scripts/fetch-third-party.sh)
+/third_party/
+
+# local scratch
+/.private/
+/scratch/
+*.db
+*.sqlite
+*.sqlite3

@@ -1,0 +1,15 @@
+[package]
+name = "hfbridge-acq"
+version = "0.1.0"
+edition = "2021"
+description = "FSK acquisition for hfbridge (DC high-pass, Costas, full known preamble)"
+publish = false
+
+[lib]
+name = "_acq"
+crate-type = ["cdylib"]
+
+[dependencies]
+num-complex = "0.4"
+pyo3 = { version = "0.25", features = ["extension-module"] }
+rustfft = "6.4"
